@@ -1,6 +1,7 @@
 //
 // Created by Brandocean on 12/6/2022.
 //
+
 #include <iostream>
 
 using namespace std;
@@ -32,8 +33,12 @@ void insertElement(Node* &list, int n){
 }
 
 void printList(Node* list){
-    while(list != NULL){
-        cout << "[" << list->data << "] ";
+    Node* temp1 = new Node();
+    temp1 = list;
+
+    while(temp1 != NULL){
+        cout << "[" << temp1->data << "] ";
+        temp1 = temp1->next;
     }
     cout << endl;
 }
@@ -43,9 +48,14 @@ int main(){
     int n;
 
     while (n != 0){
+        if(n == 0){
+            break;
+        }
+
         cout << "N: ";
         cin >> n;
         insertElement(list,n);
+        
     }
 
     printList(list);

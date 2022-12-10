@@ -1,0 +1,15 @@
+vector <int> output, nums = { 1, 2, 3, 4};
+// nums = { 1, 2, 3, 4}, output = {1, 3, 6, 10}
+Vector <int> sum1D_Array( vector<int> nums ){
+	for(int i = 0; i < nums.size(); i++){
+		if(i == 0){
+			output.push_back(nums[i]);
+		}
+		Else if(i == 1){
+			Output.push_back(nums[i] + nums[i-1]);
+		}
+		Else{
+			Output.push_back(nums[i] + output[i-1]);
+		}
+	}
+}

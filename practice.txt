@@ -1,18 +1,24 @@
 class Solution {
 public:
-    int maximumWealth(vector<vector<int>>& accounts) {
+    vector<string> fizzBuzz(int n) {
         
-		int sum;
-		int vector<int> wealht;
+		vector<string> output;
 
-		for(int i = 0; i < accounts.size(); i++){
-			for(int j = 0; j < accounts[i].size(); j++){
-				sum += accounts[i][j];
+		for(int i = 1; i <= n; i++){
+			if((i%3 == 0) && (i%5 == 0)){
+				output.push_back("FizzBuzz");
 			}
-			wealht.push_back(sum);
-			sum = 0;
+			else if((i%3 == 0) && (i%5 != 0){
+				output.push_back("Fizz")
+			}
+			else if((i%3 != 0) && (i%5 == 0)){
+				output.push_back("Buzz")
+			}
+			else{
+				output.push_back(to_string(i));
+			}
 		}
 
-		return *max_element(wealht.begin(), wealht.end());
+		return output;
     }
 };

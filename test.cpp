@@ -9,9 +9,8 @@ int main(){
     vector<int> a = {1, 2, 3, 4, 6};
     vector<string> b;
 
-    b.push_back(to_string(5));
-
-    cout << b[0] << endl;
-
+    cout << a.size() << endl;
     return 0;
 }
+
+// Array = {20, 0, 1, 2, 10, 0}

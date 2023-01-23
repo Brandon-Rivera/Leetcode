@@ -71,7 +71,7 @@ void printVector(vector<int> vector)
 int main()
 {
     // vector<int> nums = {1,1,2};
-    // vector<int> nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+    vector<int> nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
     cout << "Output: " << removeDuplicatesInPlace(nums) << endl;
     printVector(nums);
     return 0;

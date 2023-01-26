@@ -11,7 +11,7 @@ void printVector(vector<int> vector)
     cout << "[ ";
     for (int i = 0; i < vector.size(); i++)
     {
-        if (vector[i] == vector[vector.size() - 1])
+        if (i == vector.size() - 1)
         {
             cout << vector[i] << " ";
         }
@@ -29,8 +29,8 @@ int main()
     vector<string> b;
     vector<int> sub_vec{a.begin() + 1, a.begin() + a.size()};
 
-    printVector(sub_vec);
-    cout << "\nMax Element = " << *max_element(sub_vec.begin(), sub_vec.end());
+    printVector(a);
+    cout << 1%2 << endl;
 
     return 0;
 }

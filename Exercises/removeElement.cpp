@@ -20,25 +20,43 @@ int removeElement(vector<int> &nums, int val)
     return nums.size();
 }
 
-void printVector( vector<int> vector){
+int removeElementInPlace(vector<int> &nums, int val)
+{
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        if (nums[i] == val)
+        {
+            nums.erase(nums.begin() + i);
+            i--;
+        }
+    }
+    return nums.size();
+}
+
+void printVector(vector<int> vector)
+{
 
     cout << "[ ";
-    for(int i = 0; i < vector.size(); i++){
-        if(vector[i] == vector[vector.size()-1]){
+    for (int i = 0; i < vector.size(); i++)
+    {
+        if (i == vector.size() - 1)
+        {
             cout << vector[i] << " ";
-        } else {
+        }
+        else
+        {
             cout << vector[i] << ", ";
         }
     }
     cout << "] ";
-
 }
 
 int main()
 {
-    vector<int> nums = {3,2,2,3};
+    vector<int> nums = {3, 2, 2, 3};
     int val = 3;
-    cout << removeElement(nums, val) << endl;
+    cout << removeElementInPlace(nums, val) << endl;
     printVector(nums);
 
     return 0;

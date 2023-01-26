@@ -2,18 +2,22 @@
 #include <vector>
 using namespace std;
 
-void printVector( vector<int> vector){
+void printVector(vector<int> vector)
+{
 
     cout << "[ ";
-    for(int i = 0; i < vector.size(); i++){
-        if(vector[i] == vector[vector.size()-1]){
+    for (int i = 0; i < vector.size(); i++)
+    {
+        if (i == vector.size() - 1)
+        {
             cout << vector[i] << " ";
-        } else {
+        }
+        else
+        {
             cout << vector[i] << ", ";
         }
     }
     cout << "] ";
-
 }
 
 int main()

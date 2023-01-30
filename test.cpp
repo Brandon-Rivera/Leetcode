@@ -34,5 +34,3 @@ int main()
 
     return 0;
 }
-
-// Array = {20, 0, 1, 2, 10, 0}

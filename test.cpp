@@ -29,8 +29,9 @@ int main()
     vector<string> b;
     vector<int> sub_vec{a.begin() + 1, a.begin() + a.size()};
 
+    sort(a.begin(),a.end(), greater<int>());
+
     printVector(a);
-    cout << 1%2 << endl;
 
     return 0;
 }

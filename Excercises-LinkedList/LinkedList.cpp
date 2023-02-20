@@ -1,9 +1,4 @@
-//
-// Created by Brandocean on 12/6/2022.
-//
-
 #include <iostream>
-
 using namespace std;
 
 struct Node
@@ -126,25 +121,31 @@ int main()
         switch (option)
         {
         case 1:
-            cout << "N: ";
+            cout << "\nN: ";
             cin >> n;
+            cout<<endl;
             insertElement(list, n);
             break;
 
         case 2:
-            cout << "Element to search: ";
+            cout << "\nElement to search: ";
             cin >> temp;
+            cout<<endl;
             searchElement(list,temp);
             break;
 
         case 3:
-            cout << "Element to delete: ";
+            cout << "\nElement to delete: ";
             cin >> temp;
+            cout<<endl;
             deleteElement(list,temp);
             break;
 
         case 4:
+            cout<<endl;
             printList(list);
+            cout<<endl;
+            break;
 
         default:
             break;

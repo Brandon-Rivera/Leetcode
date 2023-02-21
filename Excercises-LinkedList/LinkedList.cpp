@@ -91,6 +91,14 @@ void deleteElement(Node *list, int n)
     }
 }
 
+void deleteAll(Node *&list)
+{
+
+    Node *temp = list;
+    list = temp->next;
+    delete temp;
+}
+
 void printList(Node *list)
 {
     Node *temp1 = new Node();
@@ -115,6 +123,7 @@ int main()
         cout << "2. Search" << endl;
         cout << "3. Delete" << endl;
         cout << "4. Print" << endl;
+        cout << "5. Delete ALL" << endl;
         cout << "0. Exit" << endl;
         cin >> option;
 
@@ -123,34 +132,43 @@ int main()
         case 1:
             cout << "\nN: ";
             cin >> n;
-            cout<<endl;
+            cout << endl;
             insertElement(list, n);
             break;
 
         case 2:
             cout << "\nElement to search: ";
             cin >> temp;
-            cout<<endl;
-            searchElement(list,temp);
+            cout << endl;
+            searchElement(list, temp);
             break;
 
         case 3:
             cout << "\nElement to delete: ";
             cin >> temp;
-            cout<<endl;
-            deleteElement(list,temp);
+            cout << endl;
+            deleteElement(list, temp);
             break;
 
         case 4:
-            cout<<endl;
+            cout << endl;
             printList(list);
-            cout<<endl;
+            cout << endl;
+            break;
+
+        case 5:
+            cout << endl;
+            while (list != NULL)
+            {
+                deleteAll(list);
+            }
+            cout << "Elements deleted" << endl;
+            cout << endl;
             break;
 
         default:
             break;
         }
-
     }
 
     return 0;

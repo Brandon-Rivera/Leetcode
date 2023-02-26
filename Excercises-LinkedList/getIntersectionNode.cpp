@@ -114,12 +114,32 @@ void printList(Node *list)
 
 Node *getIntersectionNode(Node *headA, Node *headB)
 {
+    Node *temp = headA, *temp2 = headB;
 
+    while (temp != NULL)
+    {
+
+        temp2 = headB;
+
+        while (temp2 != NULL)
+        {
+            if (temp == temp2)
+            {
+                return temp;
+            }
+            temp2 = temp2->next;
+        }
+        temp = temp->next;
+    }
+
+    return NULL;
 }
 
 int main()
 {
     Node *list = NULL, *list2 = NULL, *list3 = NULL;
+
+    //Case 1: With intersection
 
     insertElement(list, 4);
     insertElement(list, 1);
@@ -132,15 +152,25 @@ int main()
     insertElement(list3, 4);
     insertElement(list3, 5);
 
-    Node* temp = list;
-
     list->next->next = list3;
     list2->next->next->next = list3;
+
+    //Case 2: Without intersection
+
+    // insertElement(list,2);
+    // insertElement(list,6);
+    // insertElement(list,4);
+
+    // insertElement(list2,1);
+    // insertElement(list2,5);
 
     printList(list);
     printList(list2);
 
-    
+    cout << endl;
+
+    cout << getIntersectionNode(list, list2)->data << endl;
+
 
     return 0;
 }

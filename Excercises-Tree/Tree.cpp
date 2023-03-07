@@ -33,6 +33,21 @@ void insertNode(Node *&tree, int n){
     }
 }
 
+void showTree(Node *tree, int cnt){
+    
+    if(tree == NULL){
+        return;
+    }
+    else{
+        showTree(tree->der,cnt+1);
+        for(int i = 0; i < cnt; i++){
+            cout << "   ";
+        }
+        cout << tree->data << endl;
+        showTree(tree->izq,cnt+1);
+    }
+}
+
 int main()
 {
     Node *tree = NULL;
@@ -41,6 +56,10 @@ int main()
     insertNode(tree, 10);
     insertNode(tree, 2);
     insertNode(tree, 4);
+
+    showTree(tree,0);
+
+    cout << "\nFinished" << endl;
 
     return 0;
 }

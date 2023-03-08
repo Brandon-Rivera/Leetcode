@@ -3,16 +3,16 @@ using namespace std;
 
 struct Node{
     int data;
-    Node *der;
-    Node *izq;
+    Node *right;
+    Node *left;
 };
 
 Node *CreateNode(int n){
     Node *new_node = new Node();
 
     new_node->data = n;
-    new_node->der = NULL;
-    new_node->izq = NULL;
+    new_node->right = NULL;
+    new_node->left = NULL;
 
     return new_node;
 }
@@ -25,10 +25,10 @@ void insertNode(Node *&tree, int n){
     }
     else{
         if(n < tree->data){
-            insertNode(tree->izq,n);
+            insertNode(tree->left,n);
         }
         else{
-            insertNode(tree->der,n);
+            insertNode(tree->right,n);
         }
     }
 }
@@ -39,13 +39,30 @@ void showTree(Node *tree, int cnt){
         return;
     }
     else{
-        showTree(tree->der,cnt+1);
+        showTree(tree->right,cnt+1);
         for(int i = 0; i < cnt; i++){
             cout << "   ";
         }
         cout << tree->data << endl;
-        showTree(tree->izq,cnt+1);
+        showTree(tree->left,cnt+1);
     }
+}
+
+bool SearchNode(Node *tree, int n){
+
+    if(tree == NULL){
+        return false;
+    }
+    else if(n == tree->data){
+        return true;
+    }
+    else if(n < tree->data){
+        return SearchNode(tree->left,n);
+    }
+    else{
+        return SearchNode(tree->right,n);
+    }
+
 }
 
 int main()
@@ -59,7 +76,9 @@ int main()
 
     showTree(tree,0);
 
-    cout << "\nFinished" << endl;
+    cout << endl << "Do we find it? : " << SearchNode(tree,7) << endl;
+
+    cout << "\nFinished\n" << endl;
 
     return 0;
 }

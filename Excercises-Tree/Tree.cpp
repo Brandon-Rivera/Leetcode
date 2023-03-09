@@ -65,6 +65,17 @@ bool SearchNode(Node *tree, int n){
 
 }
 
+void preOrder(Node *tree, int cnt){
+    if(tree == NULL){
+        return;
+    }
+    else{
+        cout << tree->data << " - ";
+        preOrder(tree->left, cnt+1);
+        preOrder(tree->right,cnt+1);
+    }
+}
+
 int main()
 {
     Node *tree = NULL;
@@ -73,10 +84,14 @@ int main()
     insertNode(tree, 10);
     insertNode(tree, 2);
     insertNode(tree, 4);
+    insertNode(tree, 6);
+    insertNode(tree, 11);
 
     showTree(tree,0);
 
-    cout << endl << "Do we find it? : " << SearchNode(tree,7) << endl;
+    //cout << endl << "Do we find it? : " << SearchNode(tree,7) << endl;
+
+    preOrder(tree, 0);
 
     cout << "\nFinished\n" << endl;
 

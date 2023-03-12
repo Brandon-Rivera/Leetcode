@@ -48,7 +48,7 @@ void showTree(Node *tree, int cnt){
     }
 }
 
-bool SearchNode(Node *tree, int n){
+bool searchNode(Node *tree, int n){
 
     if(tree == NULL){
         return false;
@@ -57,10 +57,10 @@ bool SearchNode(Node *tree, int n){
         return true;
     }
     else if(n < tree->data){
-        return SearchNode(tree->left,n);
+        return searchNode(tree->left,n);
     }
     else{
-        return SearchNode(tree->right,n);
+        return searchNode(tree->right,n);
     }
 
 }
@@ -87,6 +87,19 @@ void inOrder(Node *tree){ //Izquierda -> Raiz -> derecha
     }
 }
 
+void postOrder(Node *tree){ //Izquierda -> derecha -> Raiz (muestra primero el nodo más izquierdo posible)
+    if(tree == NULL){
+        return;
+    }
+    else{
+        postOrder(tree->left);
+        postOrder(tree->right);
+        cout << tree->data << " - ";
+    }
+}
+
+
+
 int main()
 {
     Node *tree = NULL;
@@ -100,10 +113,11 @@ int main()
 
     showTree(tree,0);
 
-    //cout << endl << "Do we find it? : " << SearchNode(tree,7) << endl;
+    //cout << endl << "Do we find it? : " << searchNode(tree,7) << endl;
 
     //preOrder(tree);
-    inOrder(tree);
+    //inOrder(tree);
+    postOrder(tree);
 
     cout << "\nFinished\n" << endl;
 

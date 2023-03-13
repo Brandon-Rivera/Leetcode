@@ -5,30 +5,32 @@ struct Node{
     int data;
     Node *right;
     Node *left;
+    Node *parent;
 };
 
-Node *CreateNode(int n){
+Node *CreateNode(int n, Node *parent){
     Node *new_node = new Node();
 
     new_node->data = n;
     new_node->right = NULL;
     new_node->left = NULL;
+    new_node->parent = parent;
 
     return new_node;
 }
 
-void insertNode(Node *&tree, int n){
+void insertNode(Node *&tree, int n, Node *parent){
 
     if(tree == NULL){
-        Node *new_node = CreateNode(n);
+        Node *new_node = CreateNode(n, parent);
         tree = new_node;
     }
     else{
         if(n < tree->data){
-            insertNode(tree->left,n);
+            insertNode(tree->left,n,tree);
         }
         else{
-            insertNode(tree->right,n);
+            insertNode(tree->right,n,tree);
         }
     }
 }
@@ -98,18 +100,36 @@ void postOrder(Node *tree){ //Izquierda -> derecha -> Raiz (muestra primero el n
     }
 }
 
+void deleteNode(Node *deleteNode){
+    
+}
+
+void delete(Node *tree, int n){
+    if(tree == NULL){
+        return;
+    }
+    else if(n < tree->data){
+        delete(tree->left,n);
+    }
+    else if(n > tree->data){
+        delete(tree->right,n);
+    }
+    else{
+        deleteNode(tree);
+    }
+}
 
 
 int main()
 {
     Node *tree = NULL;
 
-    insertNode(tree, 5);
-    insertNode(tree, 10);
-    insertNode(tree, 2);
-    insertNode(tree, 4);
-    insertNode(tree, 6);
-    insertNode(tree, 11);
+    insertNode(tree, 5, NULL);
+    insertNode(tree, 10, NULL);
+    insertNode(tree, 2, NULL);
+    insertNode(tree, 4, NULL);
+    insertNode(tree, 6, NULL);
+    insertNode(tree, 11, NULL);
 
     showTree(tree,0);
 
@@ -117,7 +137,7 @@ int main()
 
     //preOrder(tree);
     //inOrder(tree);
-    postOrder(tree);
+    //postOrder(tree);
 
     cout << "\nFinished\n" << endl;
 

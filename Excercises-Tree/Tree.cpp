@@ -100,7 +100,24 @@ void postOrder(Node *tree){ //Izquierda -> derecha -> Raiz (muestra primero el n
     }
 }
 
+Node *minimum(Node *tree){ //Returns the leftmost node possible
+    if(tree == NULL){
+        return NULL;
+    }
+    else if(tree->left){
+        return minimum(tree->left);
+    }
+    else{
+        return tree;
+    }
+}
+
 void deleteNode(Node *deleteNode){
+    if(deleteNode->left && deleteNode->right){
+        Node *minimum = minimum(deleteNode->right);
+        deleteNode->data = minimum->data;
+        deleteNode(minimum);
+    }
     
 }
 

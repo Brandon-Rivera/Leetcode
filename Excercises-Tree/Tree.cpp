@@ -112,11 +112,41 @@ Node *minimum(Node *tree){ //Returns the leftmost node possible
     }
 }
 
+void replace(Node *tree, Node *new_node){
+    if(tree->parent){ 
+        //tree->parent have a new child
+        if(tree->data == tree->parent->left->data){
+            tree->parent->left = new_node;
+        }
+        else if(tree->data == tree->parent->right->data){
+            tree->parent->right = new_node;
+        }
+    }
+    if(new_node){
+        //this child have a new parent
+        new_node->parent = tree->parent;
+    }
+}
+
+void destroyNode(Node *node){
+    node->left = NULL;
+    node->right = NULL;
+    delete node;
+}
+
 void deleteNode(Node *deleteNode){
     if(deleteNode->left && deleteNode->right){
         Node *minimum = minimum(deleteNode->right);
         deleteNode->data = minimum->data;
         deleteNode(minimum);
+    }
+    else if(deleteNode->left){
+        replace(deleteNode, deleteNode->left);
+        destroyNode(deleteNode);
+    }
+    else if(deleteNode->right){
+        replace(deleteNode, deleteNode->right);
+        destroyNode(deleteNode);
     }
     
 }

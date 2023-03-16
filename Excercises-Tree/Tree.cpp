@@ -134,32 +134,35 @@ void destroyNode(Node *node){
     delete node;
 }
 
-void deleteNode(Node *deleteNode){
-    if(deleteNode->left && deleteNode->right){
-        Node *minimum = minimum(deleteNode->right);
-        deleteNode->data = minimum->data;
-        deleteNode(minimum);
+void deleteNode(Node *deleteN){
+    if(deleteN->left && deleteN->right){
+        Node *min = minimum(deleteN->right);
+        deleteN->data = min->data;
+        deleteNode(min);
     }
-    else if(deleteNode->left){
-        replace(deleteNode, deleteNode->left);
-        destroyNode(deleteNode);
+    else if(deleteN->left){
+        replace(deleteN, deleteN->left);
+        destroyNode(deleteN);
     }
-    else if(deleteNode->right){
-        replace(deleteNode, deleteNode->right);
-        destroyNode(deleteNode);
+    else if(deleteN->right){
+        replace(deleteN, deleteN->right);
+        destroyNode(deleteN);
     }
-    
+    else{
+        replace(deleteN, NULL);
+        destroyNode(deleteN);
+    }
 }
 
-void delete(Node *tree, int n){
+void deleteTree(Node *tree, int n){
     if(tree == NULL){
         return;
     }
     else if(n < tree->data){
-        delete(tree->left,n);
+        deleteTree(tree->left,n);
     }
     else if(n > tree->data){
-        delete(tree->right,n);
+        deleteTree(tree->right,n);
     }
     else{
         deleteNode(tree);
@@ -185,6 +188,8 @@ int main()
     //preOrder(tree);
     //inOrder(tree);
     //postOrder(tree);
+    deleteTree(tree,5);
+    showTree(tree,0);
 
     cout << "\nFinished\n" << endl;
 

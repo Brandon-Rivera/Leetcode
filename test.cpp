@@ -31,6 +31,8 @@ int main()
 
     sort(a.begin(),a.end(), greater<int>());
 
+    cout << "Max: " << *max_element(a.begin(), a.end()) << endl;
+
     printVector(a);
 
     return 0;

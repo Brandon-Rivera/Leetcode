@@ -27,11 +27,15 @@ int main()
 {
     vector<int> a = {1, 2, 3, 4, 6};
     vector<string> b;
+    string num = "123";
+    int num2 = 123;
     vector<int> sub_vec{a.begin() + 1, a.begin() + a.size()};
 
     sort(a.begin(),a.end(), greater<int>());
 
     cout << "Max: " << *max_element(a.begin(), a.end()) << endl;
+    cout << "string: " << stoi(num)+1 << endl;
+    cout << "int: " << to_string(num2) + "xd" << endl;
 
     printVector(a);
 
